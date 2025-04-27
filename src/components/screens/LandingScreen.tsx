@@ -26,7 +26,7 @@ const LandingScreen: React.FC<LandingScreenProps> = ({ onStartScan }) => {
           receive guidance tailored to your unique energy.
         </p>
         <div className="mt-4 flex justify-center">
-          <AuraButton onClick={onStartScan} size="lg">
+          <AuraButton gradient onClick={onStartScan} size="lg">
             Start Your Aura Scan
           </AuraButton>
         </div>
