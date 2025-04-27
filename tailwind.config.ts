@@ -1,3 +1,4 @@
+
 import type { Config } from "tailwindcss";
 
 export default {
@@ -61,6 +62,21 @@ export default {
 					'accent-foreground': 'hsl(var(--sidebar-accent-foreground))',
 					border: 'hsl(var(--sidebar-border))',
 					ring: 'hsl(var(--sidebar-ring))'
+				},
+				// Spiritual aura colors
+				aura: {
+					calmness: '#A2D5F2',  // Light blue
+					energy: '#FFB347',     // Orange
+					anxiety: '#95A5A6',    // Grey
+					confidence: '#F1C40F', // Gold
+					love: '#FF6F91',       // Pink
+				},
+				// Gradient colors
+				spiritual: {
+					primary: '#9b87f5',    // Primary purple
+					secondary: '#7E69AB',  // Secondary purple
+					light: '#D6BCFA',      // Light purple
+					bg: '#F1F0FB',         // Soft background
 				}
 			},
 			borderRadius: {
@@ -84,11 +100,41 @@ export default {
 					to: {
 						height: '0'
 					}
+				},
+				'float': {
+					'0%, 100%': {
+						transform: 'translateY(0)'
+					},
+					'50%': {
+						transform: 'translateY(-10px)'
+					}
+				},
+				'pulse-soft': {
+					'0%, 100%': {
+						opacity: '1'
+					},
+					'50%': {
+						opacity: '0.8'
+					}
+				},
+				'rotate-slow': {
+					'0%': {
+						transform: 'rotate(0deg)'
+					},
+					'100%': {
+						transform: 'rotate(360deg)'
+					}
 				}
 			},
 			animation: {
 				'accordion-down': 'accordion-down 0.2s ease-out',
-				'accordion-up': 'accordion-up 0.2s ease-out'
+				'accordion-up': 'accordion-up 0.2s ease-out',
+				'float': 'float 6s ease-in-out infinite',
+				'pulse-soft': 'pulse-soft 4s ease-in-out infinite',
+				'rotate-slow': 'rotate-slow 12s linear infinite'
+			},
+			backgroundImage: {
+				'gradient-spiritual': 'linear-gradient(135deg, #E5DEFF 0%, #FFDEE2 50%, #FDE1D3 100%)',
 			}
 		}
 	},
