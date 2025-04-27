@@ -2,6 +2,18 @@
 @tailwind components;
 @tailwind utilities;
 
+.bg-gradient-spiritual {
+  background: linear-gradient(135deg, #a18cd1, #fbc2eb, #ffdde1);
+  background-size: 400% 400%;
+  animation: gradientFlow 15s ease infinite;
+}
+
+@keyframes gradientFlow {
+  0% {background-position: 0% 50%;}
+  50% {background-position: 100% 50%;}
+  100% {background-position: 0% 50%;}
+}
+
 @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap');
 
 @layer base {
