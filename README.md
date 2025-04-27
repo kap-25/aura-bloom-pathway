@@ -1,4 +1,4 @@
-\# 🌸 Aura Bloom Pathway — \*Celestial Awakening Edition\*
+\ 🌸 Aura Bloom Pathway — \Celestial Awakening Edition\
 
 Welcome to \*\*Aura Bloom Pathway\*\*, a mystical AI-based application that helps you discover your soul's energy through personalized aura scanning, spiritual affirmations, and celestial journeys. ✨
 
