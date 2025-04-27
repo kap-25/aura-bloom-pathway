@@ -8,7 +8,7 @@ type AuraChartProps = {
   chartType?: 'pie' | 'radar';
 };
 
-const AuraChart: React.FC<AuraChartProps> = ({ auraComposition, chartType = 'pie' }) => {
+const AuraChart: React.FC<AuraChartProps> = ({ auraComposition, chartType = 'radar' }) => {
   // Define colors for each aura category
   const COLORS = {
     Calmness: "#A2D5F2", // Light blue
@@ -34,8 +34,8 @@ const AuraChart: React.FC<AuraChartProps> = ({ auraComposition, chartType = 'pie
   const CustomTooltip = ({ active, payload }: any) => {
     if (active && payload && payload.length) {
       return (
-        <div className="bg-white p-2 rounded shadow-md border border-gray-100">
-          <p className="font-medium">{`${payload[0].name}: ${payload[0].value}%`}</p>
+        <div className="bg-white/80 backdrop-blur-sm p-3 rounded-lg shadow-lg border border-white/20">
+          <p className="font-medium text-spiritual-primary">{`${payload[0].name}: ${payload[0].value}%`}</p>
         </div>
       );
     }
@@ -43,7 +43,8 @@ const AuraChart: React.FC<AuraChartProps> = ({ auraComposition, chartType = 'pie
   };
 
   return (
-    <div className="w-full h-[300px]">
+    <div className="w-full h-[300px] relative group">
+      <div className="absolute inset-0 bg-gradient-celestial rounded-2xl opacity-20" />
       <ResponsiveContainer width="100%" height="100%">
         {chartType === 'pie' ? (
           <PieChart>
@@ -62,6 +63,7 @@ const AuraChart: React.FC<AuraChartProps> = ({ auraComposition, chartType = 'pie
                 <Cell 
                   key={`cell-${index}`} 
                   fill={COLORS[entry.name as keyof typeof COLORS] || "#999999"} 
+                  className="transition-all duration-300 hover:opacity-80"
                 />
               ))}
             </Pie>
@@ -69,15 +71,19 @@ const AuraChart: React.FC<AuraChartProps> = ({ auraComposition, chartType = 'pie
           </PieChart>
         ) : (
           <RadarChart cx="50%" cy="50%" outerRadius="80%" data={data}>
-            <PolarGrid />
-            <PolarAngleAxis dataKey="name" />
+            <PolarGrid stroke="#E5DEFF" />
+            <PolarAngleAxis 
+              dataKey="name" 
+              tick={{ fill: '#7E69AB', fontSize: 12 }}
+            />
             <PolarRadiusAxis angle={30} domain={[0, 100]} />
             <Radar
               name="Aura Bloom"
               dataKey="value"
-              stroke="#8884d8"
-              fill="#8884d8"
-              fillOpacity={0.6}
+              stroke="#9b87f5"
+              fill="#9b87f5"
+              fillOpacity={0.4}
+              className="transition-all duration-300 hover:fill-opacity-60"
             />
             <Tooltip content={<CustomTooltip />} />
           </RadarChart>

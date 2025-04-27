@@ -1,4 +1,3 @@
-
 import type { Config } from "tailwindcss";
 
 export default {
@@ -63,7 +62,6 @@ export default {
 					border: 'hsl(var(--sidebar-border))',
 					ring: 'hsl(var(--sidebar-ring))'
 				},
-				// Spiritual aura colors
 				aura: {
 					calmness: '#A2D5F2',  // Light blue
 					energy: '#FFB347',     // Orange
@@ -71,7 +69,6 @@ export default {
 					confidence: '#F1C40F', // Gold
 					love: '#FF6F91',       // Pink
 				},
-				// Gradient colors
 				spiritual: {
 					primary: '#9b87f5',    // Primary purple
 					secondary: '#7E69AB',  // Secondary purple
@@ -135,6 +132,7 @@ export default {
 			},
 			backgroundImage: {
 				'gradient-spiritual': 'linear-gradient(135deg, #E5DEFF 0%, #FFDEE2 50%, #FDE1D3 100%)',
+				'gradient-celestial': 'linear-gradient(to right, rgba(147,39,143,0.2) 0%, rgba(234,172,232,0.2) 50%, rgba(246,219,245,0.2) 100%)',
 			}
 		}
 	},
