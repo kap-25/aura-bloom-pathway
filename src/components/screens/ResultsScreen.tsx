@@ -1,15 +1,16 @@
 
-import React from 'react';
-import { AuraComposition, AuraCategory, SpiritualPath } from '@/types/aura';
+import React, { useState } from 'react';
+import { AuraComposition, AuraCategory } from '@/types/aura';
 import AuraChart from '../AuraChart';
 import AuraDescription from '../AuraDescription';
 import SpiritualPathCard from '../SpiritualPathCard';
 import AuraButton from '../AuraButton';
 import { getDominantCategory } from '@/utils/auraAnalyzer';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
 type ResultsScreenProps = {
   auraComposition: AuraComposition;
-  spiritualPath: SpiritualPath;
+  spiritualPath: any;
   onStartOver: () => void;
 };
 
@@ -18,6 +19,7 @@ const ResultsScreen: React.FC<ResultsScreenProps> = ({
   spiritualPath,
   onStartOver
 }) => {
+  const [chartType, setChartType] = useState<'pie' | 'radar'>('radar');
   const dominantCategory = getDominantCategory(auraComposition);
   
   const getCategoryColor = (category: AuraCategory) => {
@@ -27,6 +29,10 @@ const ResultsScreen: React.FC<ResultsScreenProps> = ({
       case 'Anxiety': return 'from-aura-anxiety';
       case 'Confidence': return 'from-aura-confidence';
       case 'Love': return 'from-aura-love';
+      case 'Wisdom': return 'from-[#8A2BE2]';
+      case 'Creativity': return 'from-[#FFA07A]';
+      case 'Intuition': return 'from-[#9370DB]';
+      case 'Healing': return 'from-[#77DD77]';
       default: return 'from-primary';
     }
   };
@@ -43,18 +49,43 @@ const ResultsScreen: React.FC<ResultsScreenProps> = ({
         </div>
       </div>
       
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 mb-10">
-        <div>
-          <AuraChart auraComposition={auraComposition} />
-        </div>
-        
-        <div>
-          <AuraDescription auraComposition={auraComposition} />
-        </div>
-      </div>
-      
       <div className="mb-10">
-        <SpiritualPathCard spiritualPath={spiritualPath} />
+        <Tabs defaultValue="aura" className="w-full">
+          <TabsList className="grid w-full grid-cols-2">
+            <TabsTrigger value="aura">Aura Analysis</TabsTrigger>
+            <TabsTrigger value="path">Spiritual Path</TabsTrigger>
+          </TabsList>
+          <TabsContent value="aura" className="space-y-6">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-10">
+              <div>
+                <div className="mb-4 flex justify-center">
+                  <div className="inline-flex rounded-lg border border-gray-200 overflow-hidden">
+                    <button 
+                      className={`px-4 py-2 text-sm ${chartType === 'pie' ? 'bg-spiritual-primary text-white' : 'bg-white text-gray-600'}`}
+                      onClick={() => setChartType('pie')}
+                    >
+                      Aura Pie
+                    </button>
+                    <button 
+                      className={`px-4 py-2 text-sm ${chartType === 'radar' ? 'bg-spiritual-primary text-white' : 'bg-white text-gray-600'}`}
+                      onClick={() => setChartType('radar')}
+                    >
+                      Aura Bloom
+                    </button>
+                  </div>
+                </div>
+                <AuraChart auraComposition={auraComposition} chartType={chartType} />
+              </div>
+              
+              <div>
+                <AuraDescription auraComposition={auraComposition} />
+              </div>
+            </div>
+          </TabsContent>
+          <TabsContent value="path">
+            <SpiritualPathCard spiritualPath={spiritualPath} />
+          </TabsContent>
+        </Tabs>
       </div>
       
       <div className="text-center">

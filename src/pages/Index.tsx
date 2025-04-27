@@ -33,7 +33,7 @@ const Index = () => {
     
     // Get dominant category and recommended spiritual path
     const dominantCategory = getDominantCategory(newAuraComposition);
-    const recommendation = getSpiritualPathRecommendation(dominantCategory);
+    const recommendation = getSpiritualPathRecommendation(dominantCategory, newAuraComposition);
     setSpiritualPath(recommendation);
     
     // Show results screen
