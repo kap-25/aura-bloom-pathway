@@ -3,7 +3,7 @@ import React from 'react';
 import { SpiritualPath } from '@/types/aura';
 import AuraCard from './AuraCard';
 import { LucideIcon } from 'lucide-react';
-import { Lotus, MoonStar, Flame, Wave, MountainSnow, Sparkles, Sprout } from 'lucide-react';
+import { Flower, MoonStar, Flame, Waves, Mountain, Sparkles, Sprout } from 'lucide-react';
 
 type SpiritualPathCardProps = {
   spiritualPath: SpiritualPath;
@@ -12,11 +12,11 @@ type SpiritualPathCardProps = {
 const SpiritualPathCard: React.FC<SpiritualPathCardProps> = ({ spiritualPath }) => {
   const getAvatarIcon = (): LucideIcon => {
     switch (spiritualPath.avatar) {
-      case 'lotus': return Lotus;
+      case 'lotus': return Flower; // Changed from Lotus to Flower
       case 'moon-star': return MoonStar;
       case 'flame': return Flame;
-      case 'wave': return Wave;
-      case 'mountain-snow': return MountainSnow;
+      case 'wave': return Waves; // Changed from Wave to Waves
+      case 'mountain-snow': return Mountain; // Changed from MountainSnow to Mountain
       case 'sparkles': return Sparkles;
       case 'sprout': return Sprout;
       default: return Sparkles;
